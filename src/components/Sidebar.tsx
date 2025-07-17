@@ -31,7 +31,7 @@ function Sidebar() {
         <SidebarLink text="More" Icon={EllipsisHorizontalCircleIcon} active={false} />
       </div>
       <button className="hidden xl:inline ml-auto bg-[#eff3f4] text-black rounded-full w-56 h-[52px] text-lg font-bold shadow-md hover:bg-[#e1e8ed] mt-5 hoverAnimation">Post</button>
-      <div className="text-[#eff3f4] flex items-center justify-center hoverAnimation xl:ml-24 xl:mr-auto mt-auto xl:justify-start text-xl xl:space-x-3">
+      <div className="text-[#e7e9ea] flex items-center justify-center hoverAnimation xl:ml-24 xl:mr-auto mt-auto xl:justify-start text-xl xl:space-x-3">
         <img 
           src="https://pbs.twimg.com/media/Gv24x4XWwAE-iVS?format=jpg&name=900x900" 
           alt="Profile image" 
