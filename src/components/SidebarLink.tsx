@@ -1,8 +1,16 @@
-function SidebarLink({text, Icon, active}) {
+import { ComponentType, SVGProps } from 'react';
+
+interface SidebarLinkProps {
+  text: string;
+  Icon: ComponentType<SVGProps<SVGSVGElement>>;
+  active?: boolean;
+}
+
+function SidebarLink({text, Icon, active}: SidebarLinkProps) {
   return (
-    <div className={`text-[#d9d9d9] flex items-center justify-center xl:justify-start text-xl space-x-3 hoverAnimation ${active && "font-bold"}`}>
+    <div className={`text-[#eff3f4] flex items-center justify-center xl:justify-start text-xl xl:space-x-3 xl:w-fit hoverAnimation ${active && "font-bold"}`}>
         <Icon className="h-7"/>
-        <span className="hidden xl:inline">{text}</span>
+        <span className="hidden xl:inline xl:ml-1.5 xl:mr-3.5">{text}</span>
     </div>
   )
 }

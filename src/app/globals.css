@@ -9,7 +9,7 @@
 
 @layer components {
   .hoverAnimation {
-    @apply hover:bg-[rgba(217,217,217,0.1)] rounded-full cursor-pointer w-[52px] h-[52px] xl:w-auto xl:h-auto xl:py-3 xl:px-4 transition duration-200 ease-out;
+    @apply hover:bg-[rgba(217,217,217,0.1)] rounded-full cursor-pointer min-w-[52px] min-h-[52px] w-fit h-fit xl:w-auto xl:h-auto xl:py-3 xl:px-4 transition duration-200 ease-out;
   }
 }
 
