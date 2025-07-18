@@ -4,6 +4,7 @@
 @layer base {
   body {
     @apply bg-black;
+    font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
 }
 
@@ -11,5 +12,10 @@
   .hoverAnimation {
     @apply hover:bg-[rgba(217,217,217,0.1)] rounded-full cursor-pointer min-w-[52px] min-h-[52px] w-fit h-fit xl:w-auto xl:h-auto xl:py-3 xl:px-4 transition duration-200 ease-out;
   }
+
+  .icon {
+    @apply cursor-pointer w-9 h-9 hover:bg-[rgba(29,155,240,0.1)] rounded-full flex items-center justify-center transition ease-out;
+  }
 }
+
 

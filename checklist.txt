@@ -1,0 +1,3 @@
+hover text description - src/components/Input.tsx
+home header should be "For you" and "Following" - src/components/Feed.tsx
+fix all the icons on sidebar - src/components/Sidebar.tsx
