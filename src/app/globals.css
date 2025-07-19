@@ -14,7 +14,11 @@
   }
 
   .icon {
-    @apply cursor-pointer w-9 h-9 hover:bg-[rgba(29,155,240,0.1)] rounded-full flex items-center justify-center transition ease-out;
+    @apply cursor-pointer w-8.5 h-8.5 hover:bg-[rgba(29,155,240,0.1)] rounded-full flex items-center justify-center transition ease-out;
+  }
+
+  .icon > svg {
+    @apply w-5 h-5;
   }
 }
 

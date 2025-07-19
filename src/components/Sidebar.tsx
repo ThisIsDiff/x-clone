@@ -2,6 +2,8 @@ import React from 'react'
 import Image from "next/image";
 import SidebarLink from './SidebarLink';
 import { 
+  HomeIcon,
+  MagnifyingGlassIcon,
   BellIcon, 
   EnvelopeIcon, 
   BookmarkIcon, 
@@ -10,7 +12,6 @@ import {
   EllipsisHorizontalCircleIcon,
   EllipsisHorizontalIcon
 } from '@heroicons/react/24/outline';
-import { House, Search, Bell, Mail, Bookmark } from 'lucide-react';
 
 
 function Sidebar() {
@@ -20,11 +21,11 @@ function Sidebar() {
         <Image src="/assets/logo.svg" alt="Sidebar logo" width={30} height={30} />
       </div>
       <div className="space-y-2.5 mt-4 mb-2.5 xl:ml-24">
-        <SidebarLink text="Home" Icon={House} active={true} />
-        <SidebarLink text="Explore" Icon={Search} active={false} />
-        <SidebarLink text="Notifications" Icon={Bell} active={false} />
-        <SidebarLink text="Messages" Icon={Mail} active={false} />
-        <SidebarLink text="Bookmarks" Icon={Bookmark} active={false} />
+        <SidebarLink text="Home" Icon={HomeIcon} active={true} />
+        <SidebarLink text="Explore" Icon={MagnifyingGlassIcon} active={false} />
+        <SidebarLink text="Notifications" Icon={BellIcon} active={false} />
+        <SidebarLink text="Messages" Icon={EnvelopeIcon} active={false} />
+        <SidebarLink text="Bookmarks" Icon={BookmarkIcon} active={false} />
         <SidebarLink text="Lists" Icon={ClipboardDocumentListIcon} active={false} />
         <SidebarLink text="Profile" Icon={UserIcon} active={false} />
         <SidebarLink text="More" Icon={EllipsisHorizontalCircleIcon} active={false} />
