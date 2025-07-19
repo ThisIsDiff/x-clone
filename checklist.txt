@@ -1,3 +1,4 @@
 hover text description - src/components/Input.tsx
+fix how images show on post - src/components/Input.tsx
 home header should be "For you" and "Following" - src/components/Feed.tsx
 make the header a translusion blur - src/components/Feed.tsx

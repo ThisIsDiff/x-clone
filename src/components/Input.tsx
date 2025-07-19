@@ -10,15 +10,62 @@ import {
 } from 'lucide-react'
 import data from '@emoji-mart/data';
 import Picker from '@emoji-mart/react';
+import { db, storage } from '../../firebase'; // Adjust the import based on your firebase setup
+import {
+  addDoc,
+  collection, 
+  doc,
+  serverTimestamp,
+  updateDoc,}
+  from 'firebase/firestore';
+import {getDownloadURL, ref, uploadString } from 'firebase/storage';
 
 function Input() {
   const [input,setInput] = useState("");
-  const [selectedFile, setSeletedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
   const [showEmojis, setShowEmojis] = useState(false);
+  const[loading, setLoading] = useState(false);
   const filePickerRef = useRef(null);
 
-  const addImageToPost = (e) => {
+  const sendPost = async () => {
+    if (loading) return;
+    setLoading(true);
 
+    const docRef = await addDoc(collection(db, 'posts'), {  //add to db (database) unser posts collection
+      // id: sessionStorage.user.uid,
+      // username: sessionStorage.user.name,
+      // userImg: sessionStorage.user.image,
+      // tag: sessionStorage.user.tag,
+      text: input,
+      timestamp: serverTimestamp()
+    })
+
+    const imageRef = ref(storage, `posts/${docRef.id}/image`);
+
+    if (selectedFile) {
+      await uploadString(imageRef, selectedFile, "data_url").then(async () => {
+        const downloadURL = await getDownloadURL(imageRef)
+        await updateDoc(doc(db, "posts", docRef.id), {
+          image: downloadURL
+        })
+      })
+    }
+
+    setLoading(false);
+    setInput("");
+    setSelectedFile(null);
+    setShowEmojis(false);
+  }
+
+  const addImageToPost = (e) => {
+    const reader = new FileReader();
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+
+    reader.onload = (readerEvent) => {
+      setSelectedFile(readerEvent.target.result);
+    };
   };
 
   const addEmoji = (e) => {
@@ -29,6 +76,7 @@ function Input() {
     setInput(input + emoji);
   };
 
+
   return (
     <div className={'border-b border-[#2f3336] p-3 flex space-x-3 overlfow-y-scroll'}> 
       <img 
@@ -36,7 +84,7 @@ function Input() {
           alt="input image" 
           className="h-11 w-11 rounded-full cursor-pointer"/>
       <div className="w-full divide-y divide-[#2f3336]">
-        <div className={''}> 
+        <div className={` ${selectedFile && "pb-7"} ${input && "space-y-2.4"}`}> 
           <textarea 
             value={input} 
             onChange={(e) => setInput(e.target.value)}
@@ -48,7 +96,7 @@ function Input() {
             <div className="relative"> 
               <div 
                 className="absolute w-8 h-8 bg-[#15181c] hover:bg-[#272c26] bg-opacity-75 rounded-full flex items-center justify-center top-1 left-1 cursor-pointer" 
-                onClick={() => setSeletedFile(null)}
+                onClick={() => setSelectedFile(null)}
                 > 
                 <CircleXIcon className="text-white h-5"/>
                 <img 
@@ -96,8 +144,8 @@ function Input() {
             <div className="icon">
               <CalendarClockIcon className="text-[#1d9bf0] h-[22px]" />
             </div>
-            
           </div>
+            <button className="bg-[#eff3f4] text-[#0f1419] rounded-full px-4 py-1.5 font-bold shadow-md hover:bg-[rgb(215,219,220)] cursor-pointer disabled:hover:bg-[#eff3f4] disabled:opacity-50 disabled:cursor-default border-color:[#000000]" disabled={!input.trim() && !selectedFile} onClick={sendPost}>Post</button>
         </div>
       </div>
     </div>
