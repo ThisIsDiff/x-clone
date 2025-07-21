@@ -2,7 +2,7 @@
 import React from 'react'
 import { useState, useRef } from 'react';
 import {
-  CircleXIcon,
+  XIcon,
   ImageIcon,
   ChartBarBigIcon,
   SmileIcon,
@@ -78,7 +78,7 @@ function Input() {
 
 
   return (
-    <div className={'border-b border-[#2f3336] p-3 flex space-x-3 overlfow-y-scroll'}> 
+    <div className={'border-b border-[#2f3336] p-3 flex space-x-3 overlfow-y-scroll '}> 
       <img 
           src="https://pbs.twimg.com/media/Gv9wxd9WQAAYZmG?format=jpg&name=large" 
           alt="input image" 
@@ -95,16 +95,16 @@ function Input() {
           {selectedFile && (
             <div className="relative"> 
               <div 
-                className="absolute w-8 h-8 bg-[#15181c] hover:bg-[#272c26] bg-opacity-75 rounded-full flex items-center justify-center top-1 left-1 cursor-pointer" 
+                className="absolute w-8 h-8 bg-[rgba(21,24,28,0.75)] hover:bg-[rgba(39,44,38,0.75)] rounded-full flex items-center justify-center top-1 right-3.5 cursor-pointer" 
                 onClick={() => setSelectedFile(null)}
                 > 
-                <CircleXIcon className="text-white h-5"/>
-                <img 
-                  src={selectedFile} 
-                  alt=""
-                  className="rounded-2xl max-h-80 object-contain"
-                />
+                <XIcon className="text-white h-5"/>
               </div>
+              <img 
+                src={selectedFile} 
+                alt=""
+                className="rounded-2xl max-w-[514px] object-contain"
+              />
             </div>
           )}
         </div>
@@ -132,7 +132,7 @@ function Input() {
                 onChange={addImageToPost} 
                 ref={filePickerRef} 
                 hidden/>
-            </div>
+            </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
             <div className="icon">
               <ChartBarBigIcon className="text-[#1d9bf0] h-[22px]" />
             </div>
