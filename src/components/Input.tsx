@@ -78,7 +78,7 @@ function Input() {
 
 
   return (
-    <div className={'border-b border-[#2f3336] p-3 flex space-x-3 overlfow-y-scroll '}> 
+    <div className={`border-b border-[#2f3336] p-3 flex space-x-3 overlfow-y-scroll ${loading && "opacity-60"}`}> 
       <img 
           src="https://pbs.twimg.com/media/Gv9wxd9WQAAYZmG?format=jpg&name=large" 
           alt="input image" 
@@ -108,6 +108,7 @@ function Input() {
             </div>
           )}
         </div>
+{!loading && (
         <div className="flex items-center justify-between pt-2.5">
           <div className="flex items-center">
             <div className="relative">
@@ -147,6 +148,7 @@ function Input() {
           </div>
             <button className="bg-[#eff3f4] text-[#0f1419] rounded-full px-4 py-1.5 font-bold shadow-md hover:bg-[rgb(215,219,220)] cursor-pointer disabled:hover:bg-[#eff3f4] disabled:opacity-50 disabled:cursor-default border-color:[#000000]" disabled={!input.trim() && !selectedFile} onClick={sendPost}>Post</button>
         </div>
+)}
       </div>
     </div>
   )
